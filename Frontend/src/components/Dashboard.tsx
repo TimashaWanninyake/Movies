@@ -49,6 +49,14 @@ const Dashboard: React.FC = () => {
     scales: {
       y: {
         beginAtZero: true,
+        ticks: {
+          stepSize: 1,
+          callback: function(value: any) {
+            if (Number.isInteger(value)) {
+              return value;
+            }
+          }
+        }
       },
     },
   };
