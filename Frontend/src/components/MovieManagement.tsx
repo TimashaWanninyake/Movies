@@ -256,21 +256,21 @@ const MovieManagement: React.FC = () => {
   );
 
   return (
-    <div className="max-w-7xl mx-auto p-6 bg-white">
-      <div className="bg-gradient-to-r from-red-600 to-pink-600 text-white p-6 rounded-t-lg">
+    <div className="max-w-7xl mx-auto p-6">
+      <div className="text-black ml-15">
         <h2 className="text-3xl font-bold">Movie Management</h2>
-        <p className="text-red-100 mt-2">Manage movies in your cinema system</p>
+        <p className="text-gray-500 mt-2">Manage movies in the cinema system</p>
       </div>
 
-      <div className="bg-gray-50 p-6 rounded-b-lg shadow-lg">
+      <div className="mt-10">
         {/* Navigation Buttons */}
-        <div className="mb-6 flex space-x-4">
+        <div className="mb-10 flex space-x-4">
           <button
             onClick={() => setViewMode("list")}
             className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
               viewMode === "list"
-                ? "bg-red-600 text-white shadow-md"
-                : "text-gray-600 hover:text-red-600 hover:bg-red-50"
+                ? "bg-gradient-to-r from-[#00bba7] to-gray-600 text-white shadow-md"
+                : "text-gray-600 hover:text-[#00bba7] hover:bg-gray-100"
             }`}
           >
             Movies List
@@ -281,9 +281,9 @@ const MovieManagement: React.FC = () => {
               if (editingId) resetForm();
             }}
             className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-              viewMode === "form"
-                ? "bg-red-600 text-white shadow-md"
-                : "text-gray-600 hover:text-red-600 hover:bg-red-50"
+              viewMode === "form" 
+                ? "bg-gradient-to-r from-[#00bba7] to-gray-600 text-white shadow-md"
+                : "text-gray-600 hover:text-[#00bba7] hover:bg-gray-100"
             }`}
           >
             Add Movie
@@ -293,14 +293,10 @@ const MovieManagement: React.FC = () => {
         {/* Form Section */}
         {viewMode === "form" && (
           <div className="mb-8">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b-2 border-red-200 pb-2">
-              {editingId ? "Edit Movie" : "Add New Movie"}
-            </h3>
-            
             <form onSubmit={handleSubmit} className="space-y-8">
               {/* Movie Information */}
               <div>
-                <h4 className="text-lg font-medium text-gray-700 mb-4">🎬 Movie Information</h4>
+                <h4 className="text-xl font-semibold text-[#00bba7] mb-4"> Movie Information</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Movie Title *</label>
@@ -310,7 +306,7 @@ const MovieManagement: React.FC = () => {
                       value={formData.title}
                       onChange={handleChange}
                       required
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Enter movie title"
                     />
                   </div>
@@ -322,7 +318,7 @@ const MovieManagement: React.FC = () => {
                       name="genres"
                       value={formData.genres}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Action, Drama, Comedy"
                     />
                   </div>
@@ -334,7 +330,7 @@ const MovieManagement: React.FC = () => {
                       name="releaseDate"
                       value={formData.releaseDate}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                     />
                   </div>
 
@@ -345,8 +341,8 @@ const MovieManagement: React.FC = () => {
                       name="languages"
                       value={formData.languages}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
-                      placeholder="English, Spanish, French"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      placeholder="English, Sinhala, Tamil"
                     />
                   </div>
 
@@ -357,20 +353,20 @@ const MovieManagement: React.FC = () => {
                       name="countryOfOrigin"
                       value={formData.countryOfOrigin}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
-                      placeholder="USA"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
+                      placeholder="Sri Lanka"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Duration (minutes)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Duration (hours)</label>
                     <input
                       type="number"
                       name="duration"
                       value={formData.duration}
                       onChange={handleChange}
                       min="1"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="120"
                     />
                   </div>
@@ -379,7 +375,7 @@ const MovieManagement: React.FC = () => {
 
               {/* People Involved */}
               <div>
-                <h4 className="text-lg font-medium text-gray-700 mb-4">👥 People Involved</h4>
+                <h4 className="text-xl font-semibold text-[#00bba7] mb-4">People Involved</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Directors</label>
@@ -388,7 +384,7 @@ const MovieManagement: React.FC = () => {
                       name="directors"
                       value={formData.directors}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Christopher Nolan, Martin Scorsese"
                     />
                   </div>
@@ -400,7 +396,7 @@ const MovieManagement: React.FC = () => {
                       name="producers"
                       value={formData.producers}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Kevin Feige, Kathleen Kennedy"
                     />
                   </div>
@@ -412,7 +408,7 @@ const MovieManagement: React.FC = () => {
                       name="writers"
                       value={formData.writers}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Christopher Nolan, Jonathan Nolan"
                     />
                   </div>
@@ -424,7 +420,7 @@ const MovieManagement: React.FC = () => {
                       name="musicDirector"
                       value={formData.musicDirector}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Hans Zimmer"
                     />
                   </div>
@@ -433,8 +429,8 @@ const MovieManagement: React.FC = () => {
 
               {/* Actor Selection */}
               <div>
-                <h4 className="text-lg font-medium text-gray-700 mb-4">Cast Selection</h4>
-                
+                <h4 className="text-xl font-semibold text-[#00bba7] mb-4">Cast Selection</h4>
+
                 {/* Selected Actors Display */}
                 {getSelectedActors().length > 0 && (
                   <div className="mb-4">
@@ -443,13 +439,13 @@ const MovieManagement: React.FC = () => {
                       {getSelectedActors().map((actor) => (
                         <div
                           key={actor.id}
-                          className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm flex items-center gap-2"
+                          className="bg-gradient-to-r from-[#00bba7] to-gray-600 text-white px-3 py-1 rounded-full text-sm flex items-center gap-2"
                         >
                           <span>{actor.name}</span>
                           <button
                             type="button"
                             onClick={() => removeActor(actor.id)}
-                            className="text-red-600 hover:text-red-800 font-bold"
+                            className="text-black hover:text-red-400 font-bold"
                           >
                             ×
                           </button>
@@ -470,8 +466,8 @@ const MovieManagement: React.FC = () => {
                       setShowActorDropdown(true);
                     }}
                     onFocus={() => setShowActorDropdown(true)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
-                    placeholder="Type actor name to search..."
+                    className="w-full p-3 border border-gray-300 rounded-lg"
+                    placeholder="Type actor name to search"
                   />
                   
                   {/* Actor Dropdown */}
@@ -501,33 +497,11 @@ const MovieManagement: React.FC = () => {
                     </div>
                   )}
                 </div>
-                
-                {/* Available Actors Grid (for easy browsing) */}
-                {actorSearchTerm === "" && (
-                  <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Available Actors</label>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-h-40 overflow-y-auto border border-gray-200 rounded-lg p-3">
-                      {actors
-                        .filter(actor => !formData.actorIds.includes(actor.id))
-                        .map((actor) => (
-                          <button
-                            key={actor.id}
-                            type="button"
-                            onClick={() => handleActorSelection(actor.id)}
-                            className="text-left p-2 rounded border border-gray-200 hover:bg-red-50 hover:border-red-300 transition duration-200"
-                          >
-                            <div className="font-medium text-sm">{actor.name}</div>
-                            <div className="text-xs text-gray-500">{actor.email}</div>
-                          </button>
-                        ))}
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Cinema Information */}
               <div>
-                <h4 className="text-lg font-medium text-gray-700 mb-4">Cinema Information</h4>
+                <h4 className="text-xl font-semibold text-[#00bba7] mb-4">Cinema Information</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Showtimes</label>
@@ -536,7 +510,7 @@ const MovieManagement: React.FC = () => {
                       name="showtimes"
                       value={formData.showtimes}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="10:00 AM, 2:00 PM, 6:00 PM"
                     />
                   </div>
@@ -548,7 +522,7 @@ const MovieManagement: React.FC = () => {
                       name="theaterHall"
                       value={formData.theaterHall}
                       onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="Hall A, IMAX Theater"
                     />
                   </div>
@@ -562,23 +536,8 @@ const MovieManagement: React.FC = () => {
                       onChange={handleChange}
                       min="0"
                       step="0.01"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
+                      className="w-full p-3 border border-gray-300 rounded-lg"
                       placeholder="12.99"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Rating (0-5)</label>
-                    <input
-                      type="number"
-                      name="rating"
-                      value={formData.rating}
-                      onChange={handleChange}
-                      min="0"
-                      max="10"
-                      step="0.1"
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition duration-200"
-                      placeholder="8.5"
                     />
                   </div>
                 </div>
@@ -596,7 +555,7 @@ const MovieManagement: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-8 py-3 bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-lg hover:from-red-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 transform hover:scale-105"
+                  className="px-8 py-3 bg-gradient-to-r from-[#00bba7] to-gray-600 text-white rounded-lg hover:from-gray-700 hover:to-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 transform hover:scale-105"
                 >
                   {isSubmitting ? "Saving..." : (editingId ? "Update Movie" : "Add Movie")}
                 </button>
@@ -609,30 +568,31 @@ const MovieManagement: React.FC = () => {
         {viewMode === "list" && (
           <div>
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-semibold text-gray-800 border-b-2 border-red-200 pb-2">
-                🎬 Movies List ({filteredMovies.length})
+              <h3 className="text-xl font-semibold text-gray-800 pb-2">
+                Movies List ({filteredMovies.length})
               </h3>
               <div className="w-64">
                 <input
                   type="text"
-                  placeholder="Search movies..."
+                  placeholder="Search movies"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="w-full p-2 border border-gray-300 rounded-lg"
                 />
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow overflow-hidden">
-              <div className="overflow-x-auto">
+            <div className="bg-white shadow overflow-hidden rounded-lg">
+              <div className="overflow-x-auto max-h-80 overflow-y-auto">
                 <table className="w-full">
-                  <thead className="bg-gradient-to-r from-red-50 to-pink-50">
+                  <thead className="bg-gradient-to-r from-[#00bba7] to-gray-600 sticky top-0">
                     <tr>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Genre</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Title</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Genre</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Duration</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Price</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -650,7 +610,7 @@ const MovieManagement: React.FC = () => {
                             {movie.genres}
                           </td>
                           <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {movie.duration} min
+                            {movie.duration} hr
                           </td>
                           <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                             Rs {movie.ticketPrice}
@@ -658,7 +618,7 @@ const MovieManagement: React.FC = () => {
                           <td className="px-4 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                             <button
                               onClick={() => handleEdit(movie)}
-                              className="inline-flex items-center px-3 py-1 border border-transparent text-xs leading-4 font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:border-red-300 focus:shadow-outline-red active:bg-red-200 transition ease-in-out duration-150"
+                              className="inline-flex items-center px-3 py-1 border border-transparent text-xs leading-4 font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:border-green-300 focus:shadow-outline-green active:bg-green-200 transition ease-in-out duration-150"
                             >
                               Edit
                             </button>

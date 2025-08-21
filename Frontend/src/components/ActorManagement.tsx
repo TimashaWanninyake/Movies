@@ -121,17 +121,17 @@ const ActorManagement: React.FC = () => {
   );
 
   return (
-    <div className="max-w-7xl mx-auto p-6 bg-white">
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6 rounded-t-lg">
+    <div className="max-w-7xl mx-auto p-6">
+      <div className="text-black ml-15 mb-5">
         <h2 className="text-3xl font-bold">Actor Management</h2>
-        <p className="text-blue-100 mt-2">Manage actors in your cinema system</p>
+        <p className="text-gray-500 mt-2">Manage actors in the cinema system</p>
       </div>
 
-      <div className="bg-gray-50 p-6 rounded-b-lg shadow-lg">
+      <div className="pt-6">
         {/* Form Section */}
         <div className="mb-8">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b-2 border-blue-200 pb-2">
-            {editingId ? "✏️ Edit Actor" : "Add New Actor"}
+          <h3 className="text-md text-center font-semibold bg-gradient-to-r from-[#00bba7] to-gray-600 text-white rounded-lg mb-4 p-2 w-[150px]">
+            {editingId ? "Edit Actor" : "Add New Actor"}
           </h3>
           
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -145,8 +145,8 @@ const ActorManagement: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                placeholder="Enter actor's full name"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="Enter the full name"
               />
             </div>
 
@@ -160,7 +160,7 @@ const ActorManagement: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                className="w-full p-3 border border-gray-300 rounded-lg"
                 placeholder="actor@example.com"
               />
             </div>
@@ -174,8 +174,8 @@ const ActorManagement: React.FC = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                placeholder="+1 234 567 8900"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="0723456780"
               />
             </div>
 
@@ -188,8 +188,8 @@ const ActorManagement: React.FC = () => {
                 name="identityCardNumber"
                 value={formData.identityCardNumber}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                placeholder="ID123456789"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="996171957V / 20016171957"
               />
             </div>
 
@@ -204,7 +204,7 @@ const ActorManagement: React.FC = () => {
                 onChange={handleChange}
                 min="1"
                 max="120"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                className="w-full p-3 border border-gray-300 rounded-lg"
                 placeholder="25"
               />
             </div>
@@ -213,13 +213,13 @@ const ActorManagement: React.FC = () => {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Home Address
               </label>
-              <textarea
+              <input
+                type="text"
                 name="homeAddress"
                 value={formData.homeAddress}
                 onChange={handleChange}
-                rows={3}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                placeholder="123 Main Street, City, State, Country"
+                className="w-full p-3 border border-gray-300 rounded-lg"
+                placeholder="123 Main Street, State, City"
               />
             </div>
 
@@ -236,9 +236,9 @@ const ActorManagement: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 transform hover:scale-105"
+                className="px-8 py-3 bg-gradient-to-r from-[#00bba7] to-gray-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 transform hover:scale-105"
               >
-                {isSubmitting ? "Saving..." : (editingId ? "Update Actor" : "Add Actor")}
+                {isSubmitting ? "Saving" : (editingId ? "Update Actor" : "Add Actor")}
               </button>
             </div>
           </form>
@@ -247,8 +247,8 @@ const ActorManagement: React.FC = () => {
         {/* Actors List Section */}
         <div>
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-semibold text-gray-800 border-b-2 border-blue-200 pb-2">
-              📋 Actors List ({filteredActors.length})
+            <h3 className="text-xl font-semibold text-gray-800 pb-2">
+              Actors List ({filteredActors.length})
             </h3>
             <div className="w-64">
               <input
@@ -256,22 +256,22 @@ const ActorManagement: React.FC = () => {
                 placeholder="Search actors..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-2 border border-gray-300 rounded-lg"
               />
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow overflow-hidden">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto max-h-80 overflow-y-auto">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-blue-50 to-indigo-50">
+                <thead className="bg-gradient-to-r from-[#00bba7] to-gray-600 sticky top-0">
                   <tr>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
-                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">ID</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Name</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Email</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Phone</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Age</th>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -297,7 +297,7 @@ const ActorManagement: React.FC = () => {
                         <td className="px-4 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                           <button
                             onClick={() => handleEdit(actor)}
-                            className="inline-flex items-center px-3 py-1 border border-transparent text-xs leading-4 font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-blue-200 transition ease-in-out duration-150"
+                            className="inline-flex items-center px-3 py-1 border border-transparent text-xs leading-4 font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:border-green-300 focus:shadow-outline-green active:bg-green-200 transition ease-in-out duration-150"
                           >
                             Edit
                           </button>
