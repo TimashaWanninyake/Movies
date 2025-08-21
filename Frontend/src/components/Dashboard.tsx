@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
         label: "Number of Movies",
         data: Object.values(actorMovieCount),
         backgroundColor: "rgba(156, 163, 175, 1)",
-        borderColor: "rgba(156, 163, 175, 1)",
+        borderColor: "#00bba7",
         borderWidth: 1,
       },
     ],
