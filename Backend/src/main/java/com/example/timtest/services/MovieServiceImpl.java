@@ -21,6 +21,9 @@ public class MovieServiceImpl implements MovieService{
     @Autowired
     MovieRepository movieRepository;
 
+    @Autowired
+    ActorRepository actorRepository;
+
     @Override
     public List<Movie> getMovies() {
         System.out.println("get all the movies");
@@ -30,16 +33,74 @@ public class MovieServiceImpl implements MovieService{
     @Override
     public Movie createMovie(MovieCreateDTO movieCreateDTO) {
         Movie movie = new Movie();
-        movie.setName(movieCreateDTO.getName());
+        movie.setTitle(movieCreateDTO.getTitle());
+        movie.setGenres(movieCreateDTO.getGenres());
+        movie.setReleaseDate(movieCreateDTO.getReleaseDate());
+        movie.setLanguages(movieCreateDTO.getLanguages());
+        movie.setCountryOfOrigin(movieCreateDTO.getCountryOfOrigin());
+        movie.setDuration(movieCreateDTO.getDuration());
+        movie.setDirectors(movieCreateDTO.getDirectors());
+        movie.setProducers(movieCreateDTO.getProducers());
+        movie.setWriters(movieCreateDTO.getWriters());
+        movie.setMusicDirector(movieCreateDTO.getMusicDirector());
+        movie.setPosterImage(movieCreateDTO.getPosterImage());
+        movie.setTrailerVideo(movieCreateDTO.getTrailerVideo());
+        movie.setAwards(movieCreateDTO.getAwards());
+        movie.setShowtimes(movieCreateDTO.getShowtimes());
+        movie.setTheaterHall(movieCreateDTO.getTheaterHall());
+        movie.setSeatAvailability(movieCreateDTO.getSeatAvailability());
+        movie.setTicketPrice(movieCreateDTO.getTicketPrice());
         movie.setRating(movieCreateDTO.getRating());
+        
+        // Save movie first
         Movie savedMovie = movieRepository.save(movie);
+        
+        // Add actors if provided
+        if (movieCreateDTO.getActorIds() != null && !movieCreateDTO.getActorIds().isEmpty()) {
+            Set<Actor> actors = movieCreateDTO.getActorIds().stream()
+                    .map(actorId -> actorRepository.findById(actorId)
+                            .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + actorId)))
+                    .collect(Collectors.toSet());
+            savedMovie.setActors(actors);
+            savedMovie = movieRepository.save(savedMovie);
+        }
+        
         return savedMovie;
     }
 
     @Override
     public Movie updateMovie(Long id, MovieUpdateDTO movieUpdateDTO) {
         Movie movie = movieRepository.findById(id).orElseThrow(() -> new RuntimeException("Movie not found"));
-        movie.setName(movieUpdateDTO.getName());
+        
+        // Update all fields
+        movie.setTitle(movieUpdateDTO.getTitle());
+        movie.setGenres(movieUpdateDTO.getGenres());
+        movie.setReleaseDate(movieUpdateDTO.getReleaseDate());
+        movie.setLanguages(movieUpdateDTO.getLanguages());
+        movie.setCountryOfOrigin(movieUpdateDTO.getCountryOfOrigin());
+        movie.setDuration(movieUpdateDTO.getDuration());
+        movie.setDirectors(movieUpdateDTO.getDirectors());
+        movie.setProducers(movieUpdateDTO.getProducers());
+        movie.setWriters(movieUpdateDTO.getWriters());
+        movie.setMusicDirector(movieUpdateDTO.getMusicDirector());
+        movie.setPosterImage(movieUpdateDTO.getPosterImage());
+        movie.setTrailerVideo(movieUpdateDTO.getTrailerVideo());
+        movie.setAwards(movieUpdateDTO.getAwards());
+        movie.setShowtimes(movieUpdateDTO.getShowtimes());
+        movie.setTheaterHall(movieUpdateDTO.getTheaterHall());
+        movie.setSeatAvailability(movieUpdateDTO.getSeatAvailability());
+        movie.setTicketPrice(movieUpdateDTO.getTicketPrice());
+        movie.setRating(movieUpdateDTO.getRating());
+        
+        // Update actors if provided
+        if (movieUpdateDTO.getActorIds() != null && !movieUpdateDTO.getActorIds().isEmpty()) {
+            Set<Actor> actors = movieUpdateDTO.getActorIds().stream()
+                    .map(actorId -> actorRepository.findById(actorId)
+                            .orElseThrow(() -> new EntityNotFoundException("Actor not found with id: " + actorId)))
+                    .collect(Collectors.toSet());
+            movie.setActors(actors);
+        }
+        
         Movie updatedMovie = movieRepository.save(movie);
         return updatedMovie;
     }
@@ -56,9 +117,6 @@ public class MovieServiceImpl implements MovieService{
         return movieRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Movie not found with id: " + id));
     }
-
-    @Autowired
-    private ActorRepository actorRepository;
 
     @Override
     public Movie addActorsToMovie(Long id, MovieActorDTO movieActorDTO) {

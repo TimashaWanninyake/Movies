@@ -1,7 +1,4 @@
 package com.example.timtest.dtos;
-
-import com.example.timtest.models.Movie;
-
 import java.util.Set;
 
 public class MovieActorDTO {

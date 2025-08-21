@@ -5,7 +5,6 @@ import com.example.timtest.dtos.MovieCreateDTO;
 import com.example.timtest.dtos.MovieUpdateDTO;
 import com.example.timtest.models.Movie;
 import java.util.List;
-import java.util.Set;
 
 public interface MovieService {
     List<Movie> getMovies();

@@ -13,6 +13,10 @@ public class Actor {
     private Long id;
 
     private String name;
+    private String email;
+    private String phoneNumber;
+    private String identityCardNumber;
+    private String homeAddress;
     private int age;
 
     @ManyToMany(mappedBy = "actors")
@@ -39,6 +43,34 @@ public class Actor {
     }
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getIdentityCardNumber() {
+        return identityCardNumber;
+    }
+    public void setIdentityCardNumber(String identityCardNumber) {
+        this.identityCardNumber = identityCardNumber;
+    }
+
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
     public Set<Movie> getMovies() {

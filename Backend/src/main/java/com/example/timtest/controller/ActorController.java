@@ -28,17 +28,17 @@ public class ActorController {
     }
 
     @PutMapping("/{id}")
-    public Actor updateActor(@PathVariable int id, @RequestBody ActorUpdateDTO actorUpdateDTO) {
+    public Actor updateActor(@PathVariable("id") int id, @RequestBody ActorUpdateDTO actorUpdateDTO) {
         return actorService.updateActor(id, actorUpdateDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteActor(@PathVariable int id) {
+    public void deleteActor(@PathVariable("id") int id) {
         actorService.deleteActor(id);
     }
 
     @GetMapping("/{id}")
-    public ActorResponseDTO getActorById(@PathVariable Long id) {
+    public ActorResponseDTO getActorById(@PathVariable("id") Long id) {
         return actorService.getActorById(id);
     }
 }
